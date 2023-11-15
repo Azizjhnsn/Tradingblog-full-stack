@@ -1,0 +1,5 @@
+This is not actually something I learned but
+ I understood that I have been working most about rendering for the past few mounths
+  with express using express-ejs-layouts and with react js 
+  now I'll segment them and only do anything relatted to rendering with react
+   and use express only for backen so spend les time using coplicated ejs-layouts
