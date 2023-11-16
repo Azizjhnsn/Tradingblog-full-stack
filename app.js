@@ -15,8 +15,10 @@ App.get('/',(req,res)=>{
 })
 
 const registeredRouter= require('./routes/regUserRoute')
-App.use('/',registeredRouter)
+const newUserRouter= require('./routes/newUserRoute')
 
+App.use('/',registeredRouter)
+App.use('/',newUserRouter)
 
 App.listen(Port,()=>{
     console.log(`Server listening on Port http://localhost:${Port}`);
