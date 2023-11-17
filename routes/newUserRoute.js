@@ -7,5 +7,8 @@ router.get('/login',newUserController.loginController)
 
 router.get('/signup',newUserController.signupController)
 
+router.post('/login', newUserController.loginPost)
+
+router.post('/signup', newUserController.signupPost)
 
 module.exports= router

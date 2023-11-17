@@ -5,6 +5,12 @@ const newUserController={
     },
     loginController: (req,res)=>{
         res.render('../views/login.ejs')
+    },
+    signupPost: (req,res)=>{
+        console.log('sup');
+    },
+    loginPost: (req,res)=>{
+        console.log('login');
     }
 }
 

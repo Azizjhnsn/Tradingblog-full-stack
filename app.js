@@ -1,11 +1,16 @@
 const express= require('express')
 require('dotenv').config()
 const App= express()
+const regCollection = require('./models/regModel')
 const ejs= require('ejs')
 
 
 
 const Port= process.env.Port || 3090
+
+// Converting data into json and encoding URL
+App.use(express.json())
+App.use(express.urlencoded({extended: false}))
 
 App.use(express.static(__dirname+'/public'))
 App.set('view engine','ejs')
