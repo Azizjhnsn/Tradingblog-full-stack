@@ -3,7 +3,7 @@ require('dotenv').config()
 const App= express()
 const regCollection = require('./models/regModel')
 const ejs= require('ejs')
-
+const path= require('path')
 
 
 const Port= process.env.Port || 3090

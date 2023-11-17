@@ -18,7 +18,7 @@ const regSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    Password: {
+    password: {
         type: String,
         required: true
     }
