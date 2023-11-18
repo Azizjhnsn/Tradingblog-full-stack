@@ -1,5 +1,8 @@
 
 const registeredUserController= {
+    homeController:(req,res)=>{
+        res.render('../views/home.ejs')
+    },
      aboutController:(req,res)=>{
         res.render('../views/about.ejs')
     },
@@ -10,6 +13,12 @@ const registeredUserController= {
 
     contactController:(req,res)=>{
         res.render('../views/contact.ejs')
+    },
+    logoutController:(req,res)=>{
+        res.render('../views/logout.ejs')
+    },
+    logoutDeleteController:(req,res)=>{
+        
     }
 }
 

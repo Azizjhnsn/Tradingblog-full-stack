@@ -15,7 +15,7 @@ const newUserController={
         }
 const existingUser = await regCollection.findOne({name: data.name});
 if(existingUser){
-    alert("user Already exists try a different User Name")
+    res.redirect('/')
 }else{
     // hashing the pasword
     const saltround = 10
@@ -27,19 +27,19 @@ if(existingUser){
     // Adding data to the database
     const userdata = await regCollection.insertMany(data)
     console.log(userdata);
-    res.redirect('/')
+    res.redirect('/home')
 }
     },
     loginPost: async(req,res)=>{
         try{
             const checker = await regCollection.findOne({name: req.body.username})
             if(!checker){
-                console.log('user does not exist')
+                res.redirect('/')
             }
 
             const isPasswordValid = await bcrypt.compare(req.body.password, checker.password);
             if(isPasswordValid){
-                res.redirect('/')
+                res.redirect('/home')
             }else{
                 console.log("Wrong password")
             }

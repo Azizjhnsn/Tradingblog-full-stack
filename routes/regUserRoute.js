@@ -8,4 +8,10 @@ router.get('/post',registeredUserController.postController);
 
 router.get('/contact',registeredUserController.contactController);
 
+router.get('/home',registeredUserController.homeController);
+
+router.get('/logout',registeredUserController.logoutController);
+
+router.delete('/logout',registeredUserController.logoutDeleteController);
+
 module.exports=router;
