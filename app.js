@@ -4,6 +4,7 @@ const App= express()
 const regCollection = require('./models/regModel')
 const ejs= require('ejs')
 const path= require('path')
+const expressSession = require('express-session')
 
 
 const Port= process.env.Port || 3090
@@ -13,6 +14,21 @@ App.use(express.json())
 App.use(express.urlencoded({extended: false}))
 
 App.use(express.static(__dirname+'/public'))
+// Setting the session up
+App.use(expressSession({
+    secret: 'HOllalalala#22B@gg#1',
+    resave: false,
+    name: 'blogsession',
+    saveUninitialized: true,
+    cookie: {}
+}))
+
+
+// Creating the authentication middleware
+
+
+
+
 App.set('view engine','ejs')
 
 App.get('/',(req,res)=>{

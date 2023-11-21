@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt')
+const regCollection = require('../models/regModel')
 
 const registeredUserController= {
     homeController:(req,res)=>{
@@ -14,12 +16,7 @@ const registeredUserController= {
     contactController:(req,res)=>{
         res.render('../views/contact.ejs')
     },
-    logoutController:(req,res)=>{
-        res.render('../views/logout.ejs')
-    },
-    logoutDeleteController:(req,res)=>{
-        
-    }
+    
 }
 
 module.exports= {registeredUserController}
