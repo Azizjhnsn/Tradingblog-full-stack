@@ -12,7 +12,12 @@ router.get('/contact',protection,registeredUserController.contactController);
 
 router.get('/home',protection,registeredUserController.homeController);
 
+router.get('/newPost',protection,registeredUserController.newPostController);
+
+router.post('/newPost',protection,registeredUserController.newPostSendingController);
+
 router.get('/logout', (req,res)=>{
+    
     req.session.destroy((err)=>{
         if(err){
             res.status(500).send("Error while login out")

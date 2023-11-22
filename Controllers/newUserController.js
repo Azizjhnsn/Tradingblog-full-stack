@@ -26,9 +26,12 @@ if(existingUser){
     // Replacing original password with hashedpassword
     data.password = hashedPassword
 
+    // The bellow commented are used to test when adding Data to the database
+    
     // Adding data to the database
-    const userdata = await regCollection.insertMany(data)
-    console.log(userdata);
+    // const userdata = 
+    await regCollection.insertMany(data)
+    // console.log(userdata);
     res.redirect('/home')
 }
     },

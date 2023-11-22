@@ -60,3 +60,17 @@ h2{
 p{
     margin-top: 15px;
 }
+
+.form-contianer-post{
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    height: 50vh;
+
+}
+
+#newPost{
+    padding-bottom: 20vh;
+    font-size: 15px;
+}
