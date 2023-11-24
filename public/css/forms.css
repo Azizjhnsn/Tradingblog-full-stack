@@ -66,11 +66,11 @@ p{
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
-    height: 50vh;
+    height: 60vh;
 
 }
 
 #newPost{
-    padding-bottom: 20vh;
+    height: 10vh;
     font-size: 15px;
 }

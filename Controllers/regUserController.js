@@ -17,23 +17,36 @@ const registeredUserController= {
         res.render('../views/newPost.ejs')
     },
     newPostSendingController:async (req,res)=>{
-
+        try{
         // Creating record
         const postData = {
-            newPost: req.body.newPost
+            postHeader: req.body.postHeader,
+            postContent: req.body.postContent,
+            userName: req.session.user
         }
         // Adding record to db
-        try{
+        
             await postsModel.insertMany(postData)
             console.log('Post sent');
         } catch(err){
             console.log(err);
         }
+        await 
+        res.redirect('home')
     },
 
     contactController:(req,res)=>{
         res.render('../views/contact.ejs')
     },
+    logoutController: (req,res)=>{
+    
+        req.session.destroy((err)=>{
+            if(err){
+                res.status(500).send("Error while login out")
+            }
+            res.redirect('/login')
+        })
+    }
     
 }
 

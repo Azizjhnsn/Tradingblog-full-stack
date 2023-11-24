@@ -11,12 +11,15 @@
         <h2>New post</h2>
         <form action="/newPost" method="post">
             <div class="form-group">
-                <label for="name">Type your post</label>
-                <input type="text" id="NewPost" name="newPost" placeholder="Hello" required autocomplete="off">
-                
+                <label for="name">Title of your post</label>
+                <input type="text" id="NewPost" name="postHeader" placeholder="Title....." required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="name">Content of your post</label>
+                <input type="text" id="NewPost" name="postContent" placeholder="Hello........." required autocomplete="off">
             </div>
             
-            <button type="button" class="submit-btn">Validate the Post</button>
+            <button type="submit" class="submit-btn">Validate the Post</button>
         </form>
     </div>
 </body>

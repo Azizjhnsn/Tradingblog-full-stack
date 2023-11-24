@@ -3,7 +3,11 @@ const mongoose = require('mongoose')
 
 // Creating a schema
 const postedData = new mongoose.Schema({
-    newPost: {
+    postHeader: {
+        type: String,
+        required: true
+    },
+    postContent: {
         type: String,
         required: true
     }
@@ -11,4 +15,6 @@ const postedData = new mongoose.Schema({
 
 const postCollection = new mongoose.model("posts", postedData)
 
+
 module.exports = postCollection
+

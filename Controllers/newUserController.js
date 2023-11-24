@@ -27,7 +27,7 @@ if(existingUser){
     data.password = hashedPassword
 
     // The bellow commented are used to test when adding Data to the database
-    
+
     // Adding data to the database
     // const userdata = 
     await regCollection.insertMany(data)
@@ -37,16 +37,17 @@ if(existingUser){
     },
     loginPost: async(req,res)=>{
         try{
-            const checker = await regCollection.findOne({name: req.body.username})
-            if(!checker){
-                console.log("No user with such user");
+            const isUserValid = await regCollection.findOne({name: req.body.username})
+            if(!isUserValid){
+                console.log("No user with such user name");
             }
 
-            const isPasswordValid = await bcrypt.compare(req.body.password, checker.password);
+            const isPasswordValid = await bcrypt.compare(req.body.password, isUserValid.password);
             if(isPasswordValid){
-                req.session.user = checker.name
+                req.session.user = isUserValid.name
                 res.redirect('/home')
             }else{
+                
                 console.log("Wrong password")
             }
 
