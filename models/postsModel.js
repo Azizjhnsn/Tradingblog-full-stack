@@ -10,8 +10,13 @@ const postedData = new mongoose.Schema({
     postContent: {
         type: String,
         required: true
+    },
+    userName: {
+        type: String,
+        required: true
     }
-})
+},  {timestamps: true,}
+)
 
 const postCollection = new mongoose.model("posts", postedData)
 

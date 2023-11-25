@@ -26,7 +26,7 @@ if(existingUser){
     // Replacing original password with hashedpassword
     data.password = hashedPassword
 
-    // The bellow commented are used to test when adding Data to the database
+    // The bellow commented are used to test when adding Data to the database and are therefore useless now
 
     // Adding data to the database
     // const userdata = 
@@ -47,7 +47,6 @@ if(existingUser){
                 req.session.user = isUserValid.name
                 res.redirect('/home')
             }else{
-                
                 console.log("Wrong password")
             }
 

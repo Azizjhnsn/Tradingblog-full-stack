@@ -15,6 +15,7 @@ const registeredUserController= {
 
     newPostController:(req,res)=>{
         res.render('../views/newPost.ejs')
+        
     },
     newPostSendingController:async (req,res)=>{
         try{
@@ -28,6 +29,7 @@ const registeredUserController= {
         
             await postsModel.insertMany(postData)
             console.log('Post sent');
+            console.log(req.session.user);
         } catch(err){
             console.log(err);
         }

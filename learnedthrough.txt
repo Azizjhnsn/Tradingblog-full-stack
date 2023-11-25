@@ -3,3 +3,14 @@ This is not actually something I learned but
   with express using express-ejs-layouts and with react js 
   now I'll segment them and only do anything relatted to rendering with react
    and use express only for backen so spend les time using coplicated ejs-layouts
+
+
+Mongoose is nonrelational therefore can't link different tables together that iis why 
+I used express session to store user name in order to know which user posted what
+
+we always set express session parameter(or jwt ) in the app.js
+
+mongoDB records Ids are a random st of characterfa-spin
+
+we set timestamps to true whenever we want to keep track of when data has been added or updated in the database since mongoDB
+does not have automating date & time recording like mysql
