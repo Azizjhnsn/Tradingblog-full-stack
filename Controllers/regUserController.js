@@ -11,12 +11,7 @@ const registeredUserController= {
 
     // Route to get the latest data
     postController:(req,res)=>{
-        // Access the latest data from the request object
-        const latestData = req.latestData;
-
-        if (!latestData){
-            console.log('404 No data found');
-        }
+ 
         res.render('../views/post.ejs')
     },
 
