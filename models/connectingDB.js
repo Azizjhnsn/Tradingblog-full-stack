@@ -1,8 +1,9 @@
+
 // Requiring mongodb
 const { text } = require('express');
 const mongoose = require('mongoose')
 // Creatin db connection
-const connect = mongoose.connect('mongodb://127.0.0.1:27017/CleanBlog')
+const connect = mongoose.connect(process.env.DbConnectUrl)
 
 // Checking connection
 connect.then(()=>{

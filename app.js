@@ -16,9 +16,9 @@ App.use(express.urlencoded({extended: false}))
 App.use(express.static(__dirname+'/public'))
 // Setting the session up
 App.use(expressSession({
-    secret: 'HOllalalala#22B@gg#1',
+    secret: process.env.SECRET,
     resave: false,
-    name: 'blogsession',
+    name: process.env.NAME,
     saveUninitialized: true,
     cookie: {}
 }))
