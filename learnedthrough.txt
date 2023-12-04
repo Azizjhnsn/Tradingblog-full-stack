@@ -14,3 +14,9 @@ mongoDB records Ids are a random st of characterfa-spin
 
 we set timestamps to true whenever we want to keep track of when data has been added or updated in the database since mongoDB
 does not have automating date & time recording like mysql
+
+Todays task will be to change the ejs posts page in order to manually upload content and then connect the data updating function with our database
+
+So to do that ill first use ejs to create a variable that will hold the text of our update 
+Then clone the html element that holds the text content and all it s design
+And then pass in the varible that holds our input via ejs

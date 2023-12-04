@@ -3,7 +3,12 @@ const postsModel = require('../models/postsModel')
 
 const registeredUserController= {
     homeController:(req,res)=>{
-        res.render('../views/home.ejs')
+        res.render('../views/home.ejs',  {
+            Title: 'Theorical title outta database',
+            Content: 'Theorical content outta database',
+            Name: 'Theorical UseName',
+            Date: 'Theorical date'
+        })
     },
      aboutController:(req,res)=>{
         res.render('../views/about.ejs')

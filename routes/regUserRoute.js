@@ -17,7 +17,7 @@ router.get('/newPost',protection,registeredUserController.newPostController);
 router.post('/newPost',protection,registeredUserController.newPostSendingController);
 
 
-router.get('/logout',registeredUserController.logoutController)
+router.get('/logout',registeredUserController.logoutController);
 
 
 module.exports=router;
