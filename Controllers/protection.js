@@ -4,7 +4,6 @@ const protetionMiddlware = (req,res,next)=>{
         next()
     }else{
         res.redirect('/login')
-        console.log('secured');
     }
 }
 

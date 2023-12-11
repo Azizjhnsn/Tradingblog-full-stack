@@ -20,3 +20,11 @@ Todays task will be to change the ejs posts page in order to manually upload con
 So to do that ill first use ejs to create a variable that will hold the text of our update 
 Then clone the html element that holds the text content and all it s design
 And then pass in the varible that holds our input via ejs
+
+The middleware for data retrieval is storing the data in an array of object 
+
+Able to access the post data from the db with the middleware
+
+Updated the login system for case sensitiveness
+
+Tryng to upate the ejs file

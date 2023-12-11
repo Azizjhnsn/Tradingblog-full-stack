@@ -1,14 +1,18 @@
 const bcrypt = require('bcrypt')
 const postsModel = require('../models/postsModel')
+const databaseContent = require('./dataretrieval')
 
 const registeredUserController= {
-    homeController:(req,res)=>{
-        res.render('../views/home.ejs',  {
-            Title: 'Theorical title outta database',
-            Content: 'Theorical content outta database',
-            Name: 'Theorical UseName',
+    homeController: async (req,res)=>{
+      try{  res.render('../views/home.ejs',
+      await{
+            Title: databaseContent.postTitle,
+            Content: databaseContent.postContent,
+            Name: databaseContent.postReference,
             Date: 'Theorical date'
-        })
+        },
+        // console.log(Title,Content,Name),
+        )  }catch(err){}
     },
      aboutController:(req,res)=>{
         res.render('../views/about.ejs')
