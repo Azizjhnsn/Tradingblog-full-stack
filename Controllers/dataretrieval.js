@@ -14,12 +14,12 @@ const retriveLatestData = async (req, res, next) => {
         console.log(latestPost);
 
         // Storing post title content and username
-        let postTitle = latestPost.postHeader.toString()
-        let postContent = latestPost.postContent.toString()
-        let postReference = latestPost.userName.toString()
+        let postTitle = latestPost.postHeader
+        let postContent = latestPost.postContent
+        let postReference = latestPost.userName
         // let postDate = latestPost.createdAT
 
-        // console.log(postTitle,postContent,postReference);
+        console.log(postTitle,postContent,postReference);
 
 
         // Logging the retrieved data
