@@ -1,5 +1,4 @@
 // Middleware for data retrieal
-
 const postsModel= require('../models/postsModel')
 
 
@@ -11,19 +10,15 @@ const retriveLatestData = async (req, res, next) => {
 
         // Accessin the last element of the array
         const latestPost = allData[allData.length -1]
-        console.log(latestPost);
+        JSON.stringify(latestPost);
 
         // Storing post title content and username
         let postTitle = latestPost.postHeader
         let postContent = latestPost.postContent
         let postReference = latestPost.userName
-        // let postDate = latestPost.createdAT
 
         console.log(postTitle,postContent,postReference);
 
-
-        // Logging the retrieved data
-        // console.log('All Data: ', allData);
 
         // Attach the data to the request
         req.allData = allData;
@@ -38,10 +33,3 @@ const retriveLatestData = async (req, res, next) => {
 };
 
 module.exports = retriveLatestData
-
-
-
-
-
-
-

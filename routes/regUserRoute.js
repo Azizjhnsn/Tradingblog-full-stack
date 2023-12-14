@@ -1,8 +1,9 @@
 const express= require('express');
 const router= express.Router();
 const {registeredUserController}= require('../Controllers/regUserController');
-const protection = require('../Controllers/protection')
-const retrieval = require('../Controllers/dataretrieval')
+const protection = require('../middlewares/protection')
+const retrieval = require('../middlewares/dataretrieval')
+const imgUpload= require('../middlewares/fileUploadMiddleware')
 
 router.get('/about',protection,registeredUserController.aboutController);
 
@@ -12,9 +13,11 @@ router.get('/contact',protection,registeredUserController.contactController);
 
 router.get('/home',protection,registeredUserController.homeController);
 
-router.get('/newPost',protection,registeredUserController.newPostController);
+// router.post('/newPost',registeredUserController.newPostSendingController);
 
-router.post('/newPost',protection,registeredUserController.newPostSendingController);
+// I've commented this so I can create another post route to handle posting pictures with another UI as well
+
+router.post('/newPost',imgUpload.array('imageFile',5),registeredUserController.newPostSendingController);
 
 
 router.get('/logout',registeredUserController.logoutController);

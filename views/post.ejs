@@ -28,13 +28,12 @@
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="home">Home</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about">About</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="newPost">Create a Post</a></li>
-
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact">Contact</a></li>                        
                     </ul>
                 </div>
             </div>
         </nav>
+        
         <!-- Page Header-->
         <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
             <div class="container position-relative px-4 px-lg-5">
@@ -53,6 +52,45 @@
                 </div>
             </div>
         </header>
+
+        <!-- Post modal -->
+        <button type="button" class="btn btn-primary ms-lg-3" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add a post</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">New Post</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="/newPost" method="post" enctype="multipart/form-data">
+                  <div class="mb-3">
+                    <label for="name" class="col-form-label">Post title</label>
+                    <input type="text" class="form-control" name="postHeader" >
+                  </div>
+                  <div class="mb-3">
+                    <label for="name" class="col-form-label">Post Message:</label>
+                    <input class="form-control" name="postContent" ></input>
+                  </div>
+                  <div class="mb-3">
+                    <label for="name">Attach image/images</label>
+                    <input class="form-control" type="file" name="imageFile" accept="image/*" multiple></input>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" >Send message</button>
+                  </div>
+                </form>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- End Post modal -->
+
+
         <!-- Post Content-->
         <article class="mb-4">
             <div class="container px-4 px-lg-5">

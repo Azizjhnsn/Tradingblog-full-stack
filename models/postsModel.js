@@ -22,4 +22,3 @@ const postCollection = new mongoose.model("posts", postedData)
 
 
 module.exports = postCollection
-

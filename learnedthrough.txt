@@ -28,3 +28,7 @@ Able to access the post data from the db with the middleware
 Updated the login system for case sensitiveness
 
 Tryng to upate the ejs file
+
+ learned that we use multer libreary for file upload
+
+ And I can now add files to the server 
