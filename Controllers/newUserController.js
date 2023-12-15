@@ -3,18 +3,17 @@ const regCollection = require("../models/regModel")
 
 
 // Login and signup routes (get/post)
-const newUserController={
-    signupController: (req,res)=>{
+const signupController= (req,res)=>{
         res.render('../views/signup.ejs')
-    },
+    }
 
 
-    loginController: (req,res)=>{
+    loginController= (req,res)=>{
         res.render('../views/login.ejs')
-    },
+    }
 
 
-    signupPost: async (req,res)=>{
+    signupPost= async (req,res)=>{
         const data = {
             name: req.body.username,
             password: req.body.password
@@ -36,10 +35,10 @@ const newUserController={
 
     res.redirect('/home')
 }
-    },
+    }
     
 
-    loginPost: async(req,res)=>{
+    loginPost= async(req,res)=>{
         try{
             const isUserValid = await regCollection.findOne({name: req.body.username})
             if(!isUserValid){
@@ -56,6 +55,11 @@ const newUserController={
 
     }catch{console.log('wrong details')}
     }
-}
 
-module.exports= {newUserController}
+
+module.exports= {
+    signupController,
+    loginController,
+    signupPost,
+    loginPost
+}

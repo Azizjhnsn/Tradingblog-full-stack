@@ -32,3 +32,15 @@ Tryng to upate the ejs file
  learned that we use multer libreary for file upload
 
  And I can now add files to the server 
+
+ The way I was writing code in my controller file was wrong because I put everythin in an object
+
+ I should not use a middeware to retrieve the data
+
+ The reason why I was not seing the data in the variables reflect in my eja file was because my variables were inside of a function and then I wanted
+ to access it outside of the function.
+
+ I then made the variables global but it still wasn't working 
+
+ The reason was because my function was asyncronous and I called it outside of the try & catch so I had to rap it up inside the try & catch
+ so that it will await for the data being retrieved in the datbase  to assign it to the variable I passed in my app.get function

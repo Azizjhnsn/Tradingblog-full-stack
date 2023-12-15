@@ -1,38 +1,68 @@
 const bcrypt = require('bcrypt')
 const postsModel = require('../models/postsModel')
-const databaseContent = require('../middlewares/dataretrieval')
 
-const registeredUserController= {
-    homeController: async (req,res)=>{
+// Retrieve the data function
+let postTitle= ''
+let postContent= ''
+let postReference= ''
+async function retrieveFromDb (res){
+    try {
+        // Retrieve all data from the collection
+        const allData = await postsModel.find();
+
+        // Accessin the last element of the array
+        const latestPost = allData[allData.length -1]
+
+        // Storing post title content and username
+        postTitle = latestPost.postHeader
+        postContent = latestPost.postContent
+        postReference = latestPost.userName
+
+
+        return(postTitle,postContent,postReference)
+
+
+    } catch (error) {
+        console.error(error);
+        // Handle the error or send an internal server error response
+        res.status(500).send('Internal server error');
+    }
+};
+
+console.log(postTitle,postContent,postReference);
+
+const homeController = async (req,res)=>{
      res.render('../views/home.ejs')
-    },
+    }
 
 
-     aboutController:(req,res)=>{
+const aboutController = (req,res)=>{
         res.render('../views/about.ejs')
-    },
+    }
 
 
 
-    postController:async(req,res)=>{
- 
-       try{ res.render('../views/post.ejs',
-      await{
-            Title: databaseContent.postTitle,
-            Content: databaseContent.postContent,
-            Name: databaseContent.postReference,
-            Date: 'Theorical date'
-        }
-
-       )
+    const postController = async (req, res) => {
+        try {
+            // Wait for the data to be retrieved from the database
+            await retrieveFromDb(res);
     
-    } catch(error){console.log(error);}
+            // Now, you can access the data stored in postTitle, postContent, and postReference
+            res.render('../views/post.ejs', {
+                Title: postTitle,
+                Content: postContent,
+                Name: postReference
+            });
+        } catch (error) {
+            console.log(error);
+            res.status(500).send('Internal server error');
+        }
+    };
+    
 
-    },
 
 
-
-    newPostSendingController:async (req,res)=>{
+const newPostSendingController = async (req,res)=>{
         try{
         // Creating record
         const postData = {
@@ -49,15 +79,15 @@ const registeredUserController= {
         }
         await 
         res.redirect('post')
-    },
+    }
 
 
-    contactController:(req,res)=>{
+const contactController = (req,res)=>{
         res.render('../views/contact.ejs')
-    },
+    }
 
     
-    logoutController: (req,res)=>{
+const logoutController = (req,res)=>{
     
         req.session.destroy((err)=>{
             if(err){
@@ -67,6 +97,12 @@ const registeredUserController= {
         })
     }
     
-}
 
-module.exports= {registeredUserController}
+module.exports= {
+    homeController,
+    aboutController,
+    postController,
+    newPostSendingController,
+    contactController,
+    logoutController
+}
