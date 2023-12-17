@@ -44,3 +44,7 @@ Tryng to upate the ejs file
 
  The reason was because my function was asyncronous and I called it outside of the try & catch so I had to rap it up inside the try & catch
  so that it will await for the data being retrieved in the datbase  to assign it to the variable I passed in my app.get function
+
+ My first idea of looking for the last post in the db was a lil bit compicated to pull and not the best way to do it
+ Instead I just looped through the array of the database and dispay each element of it that I need
+ where and when I need it.

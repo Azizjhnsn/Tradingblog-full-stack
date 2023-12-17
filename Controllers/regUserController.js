@@ -1,25 +1,16 @@
 const bcrypt = require('bcrypt')
 const postsModel = require('../models/postsModel')
 
-// Retrieve the data function
-let postTitle= ''
-let postContent= ''
-let postReference= ''
+
+let allData=[]
 async function retrieveFromDb (res){
     try {
         // Retrieve all data from the collection
-        const allData = await postsModel.find();
-
-        // Accessin the last element of the array
-        const latestPost = allData[allData.length -1]
-
-        // Storing post title content and username
-        postTitle = latestPost.postHeader
-        postContent = latestPost.postContent
-        postReference = latestPost.userName
+         allData = await postsModel.find();
 
 
-        return(postTitle,postContent,postReference)
+
+        return(allData)
 
 
     } catch (error) {
@@ -29,7 +20,7 @@ async function retrieveFromDb (res){
     }
 };
 
-console.log(postTitle,postContent,postReference);
+
 
 const homeController = async (req,res)=>{
      res.render('../views/home.ejs')
@@ -49,9 +40,7 @@ const aboutController = (req,res)=>{
     
             // Now, you can access the data stored in postTitle, postContent, and postReference
             res.render('../views/post.ejs', {
-                Title: postTitle,
-                Content: postContent,
-                Name: postReference
+                posts: allData
             });
         } catch (error) {
             console.log(error);
