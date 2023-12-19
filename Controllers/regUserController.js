@@ -5,6 +5,7 @@ const postsModel = require('../models/postsModel')
 let allData=[]
 async function retrieveFromDb (res){
     try {
+        
         // Retrieve all data from the collection
          allData = await postsModel.find();
 
@@ -23,7 +24,15 @@ async function retrieveFromDb (res){
 
 
 const homeController = async (req,res)=>{
-     res.render('../views/home.ejs')
+     try{
+        await retrieveFromDb(res);
+        res.render('../views/home.ejs',
+        {
+            posts: allData
+        })
+     }catch(error){
+        console.log(error);
+     }
     }
 
 

@@ -48,3 +48,20 @@ Tryng to upate the ejs file
  My first idea of looking for the last post in the db was a lil bit compicated to pull and not the best way to do it
  Instead I just looped through the array of the database and dispay each element of it that I need
  where and when I need it.
+
+
+ Get few posts on the homepage.
+ Organize posts in order.
+ Get the date to apear
+ Organize posts by importance
+ update & delete
+
+ Add update and delete button on each post 
+ Update
+ Find out how to access the Id's of posts oncick event
+ and access the content of specified content to put them bach in the fields that woll popup
+ and last use update to change the content in the db to the new content
+ 
+Delete 
+Access id of content with button 
+And delete the whole record from db 

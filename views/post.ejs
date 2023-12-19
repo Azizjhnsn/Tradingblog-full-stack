@@ -53,8 +53,22 @@
             </div>
         </header>
 
-        <!-- Post modal -->
-        <button type="button" class="btn btn-primary ms-lg-3" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add a post</button>
+        <div class="container row justify-content-center ">
+            <!-- fake element -->
+            <a href="" class="col col-xs-12 col-md"></a>
+            <!-- All posts button -->
+            <a href="" class="col col-xs-12 col-md">All posts</a>
+            <!-- Verified posts button-->
+            <a href="" class="col col-xs-12 col-md">Verified posts</a>
+            <!-- Non verified posts button -->
+            <a href="" class="col col-xs-12 col-md">Non verified posts</a>
+            <!-- chart -->
+            <a href="" class="col col-xs-12 col-md">Charts</a>
+
+
+            
+                            <!--Post modal -->
+        <button type="button" class="btn btn-primary ms-lg-3 col col-xs-12 col-md" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add a post</button>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -89,7 +103,9 @@
           </div>
         </div>
         <!-- End Post modal -->
+        </div>  
 
+        
 
                             <!-- Divider-->
                             <hr class="my-4" />
@@ -101,7 +117,7 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
 
                       <!-- Posts-->
-                      <% posts.forEach( post=>{ %>
+                      <% posts.reverse().forEach( post=>{ %>
                       <div class="post-preview">
                         <a>
                             <h2 class="post-title"><%= post.postHeader %></h2>
@@ -115,15 +131,18 @@
                     </div>
                     <!-- Divider-->
                     <hr class="my-4" />
+                    <button class="btn btn-primary">Update</button>
+                    <button class="btn btn-danger">Delete</button>
                     <% }) %>
                     </div>
+
                 </div>
             </div>
         </article>
 
         
-                            <!-- Divider-->
-                            <hr class="my-4" />
+        <!-- Divider-->
+        <hr class="my-4" />
 
         <div class="container" style="height: 90vh;">
 
