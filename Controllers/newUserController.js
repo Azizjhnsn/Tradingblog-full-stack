@@ -1,6 +1,39 @@
 const bcrypt = require('bcrypt')
 const regCollection = require("../models/regModel")
+const postsModel = require('../models/postsModel')
 
+
+
+let allData=[]
+async function retrieveFromDb (res){
+    try {
+        
+        // Retrieve all data from the collection
+         allData = await postsModel.find();
+
+        return(allData)
+
+
+    } catch (error) {
+        console.error(error);
+        // Handle the error or send an internal server error response
+        res.status(500).send('Internal server error');
+    }
+};
+
+
+// homepage
+const homepage= async(req,res)=>{
+    try{
+       await retrieveFromDb(res);
+       res.render('index',
+       {
+           posts: allData
+       })
+    }catch(error){
+       console.log(error);
+    }
+   }
 
 // Login and signup routes (get/post)
 const signupController= (req,res)=>{
@@ -47,17 +80,27 @@ const signupController= (req,res)=>{
 
             const isPasswordValid = await bcrypt.compare(req.body.password, isUserValid.password);
             if(isPasswordValid){
-                req.session.user = isUserValid.name
+                if (req.session){
+                    req.session.user = isUserValid.name
                 res.redirect('/home')
+                }else{
+                    console.error('Session Error')
+                    res.status(500).send('No session')
+                }
             }else{
                 console.log("Wrong password")
+                
             }
 
-    }catch{console.log('wrong details')}
+    }catch(error){
+        console.error(error);
+        res.status(500).send('Verification error')
+    }
     }
 
 
 module.exports= {
+    homepage,
     signupController,
     loginController,
     signupPost,

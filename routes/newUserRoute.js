@@ -1,14 +1,17 @@
 const express= require('express')
 const router= express.Router()
-const newUserController= require('../Controllers/newUserController.js')
+const {
+    homepage,
+    signupController,
+    loginController,
+    signupPost,
+    loginPost
+       }= require('../Controllers/newUserController.js')
 
-
-router.get('/login',newUserController.loginController);
-
-router.get('/signup',newUserController.signupController);
-
-router.post('/login', newUserController.loginPost);
-
-router.post('/signup', newUserController.signupPost);
+router.get('/',homepage);
+router.get('/login',loginController);
+router.get('/signup',signupController);
+router.post('/login',loginPost);
+router.post('/signup',signupPost);
 
 module.exports= router;
