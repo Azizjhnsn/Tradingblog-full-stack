@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt')
 const postsModel = require('../models/postsModel')
+const nodemailer = require('nodemailer')
 
 
 let allData=[]
@@ -8,8 +9,6 @@ async function retrieveFromDb (res){
         
         // Retrieve all data from the collection
          allData = await postsModel.find();
-
-
 
         return(allData)
 
@@ -49,8 +48,9 @@ const aboutController = (req,res)=>{
     
             // Now, you can access the data stored in postTitle, postContent, and postReference
             res.render('../views/post.ejs', {
-                posts: allData
+                posts: allData,
             });
+            
         } catch (error) {
             console.log(error);
             res.status(500).send('Internal server error');
@@ -94,6 +94,33 @@ const logoutController = (req,res)=>{
             res.redirect('/login')
         })
     }
+
+const sendEmail = async(req,res)=>{
+    const transporter = nodemailer.createTransport({
+        host:process.env.SMTP_HOST,
+        port:process.env.SMTP_PORT,
+        secured:false,
+        auth:{
+            user:process.env.SMTP_USER,
+            pass:process.env.SMTP_PASSWORD
+        }
+    })
+
+    try{
+        const mailOptions={
+            from:req.body.email,
+            to:process.env.USER,
+            subject:"Message from Aziz&Charts User",
+            text:req.body.message
+        }
+        transporter.sendMail(mailOptions)
+        console.log('Email Sent');
+        res.redirect('/contact')
+    }catch(error){
+        console.log();
+        res.status(500).send('Error sending Email')
+    }
+}
     
 
 module.exports= {
@@ -102,5 +129,6 @@ module.exports= {
     postController,
     newPostSendingController,
     contactController,
-    logoutController
+    logoutController,
+    sendEmail
 }

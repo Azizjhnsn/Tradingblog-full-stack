@@ -2,7 +2,7 @@ This is not actually something I learned but
  I understood that I have been working most about rendering for the past few mounths
   with express using express-ejs-layouts and with react js 
   now I'll segment them and only do anything relatted to rendering with react
-   and use express only for backen so spend les time using coplicated ejs-layouts
+   and use express only for backend so spend les time using coplicated ejs-layouts
 
 
 Mongoose is nonrelational therefore can't link different tables together that iis why 
@@ -57,11 +57,19 @@ Tryng to upate the ejs file
  update & delete
 
  Add update and delete button on each post 
+
+To do:
+
  Update
  Find out how to access the Id's of posts oncick event
  and access the content of specified content to put them bach in the fields that woll popup
  and last use update to change the content in the db to the new content
  
+
 Delete 
 Access id of content with button 
 And delete the whole record from db 
+
+Sort posts
+
+Add a picturre to a post
