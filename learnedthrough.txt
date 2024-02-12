@@ -50,6 +50,8 @@ Tryng to upate the ejs file
  where and when I need it.
 
 
+learned that while using sessions everything regarding routing should be done after setting up the session
+
  Get few posts on the homepage.
  Organize posts in order.
  Get the date to apear
