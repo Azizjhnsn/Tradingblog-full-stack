@@ -1,3 +1,4 @@
 node_modules
 .env
 learnedthrough.txt
+package-lock.json
