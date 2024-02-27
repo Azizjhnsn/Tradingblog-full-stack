@@ -37,12 +37,12 @@ const homepage= async(req,res)=>{
 
 // Login and signup routes (get/post)
 const signupController= (req,res)=>{
-        res.render('../views/signup.ejs')
+        res.render('signup.ejs')
     }
 
 
     loginController= (req,res)=>{
-        res.render('../views/login.ejs')
+        res.render('login.ejs')
     }
 
 
