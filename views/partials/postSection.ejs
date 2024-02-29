@@ -1,0 +1,39 @@
+
+                            <!-- Divider-->
+                            <hr class="my-4" />
+
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+
+                      <!-- Posts-->
+                      <% posts.reverse().forEach( post=>{ %>
+                      <div class="post-preview">
+                        <a>
+                            <h2 class="post-title"><%= post.postHeader %></h2>
+                            <h3 class="post-subtitle"><%= post.postContent %></h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!"><%= post.userName %></a>
+                            <% post.createdAt.toDateString() %>
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Comming soon -->
+
+                    <!-- <button class="btn btn-primary">Update</button>
+                    <button class="btn btn-danger">Delete</button> -->
+                    <% }) %>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+
+        
+        <!-- Divider-->
+        <hr class="my-4" />

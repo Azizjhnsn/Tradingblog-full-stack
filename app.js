@@ -14,10 +14,12 @@ const Port= process.env.Port || 3090
 
 // Converting data into json and encoding URL
 App.use(express.json())
-App.use(express.urlencoded({extended: false}))
+App.use(express.urlencoded({extended: false}));
+App.set('view engine','ejs');
 App.set("views", __dirname + "/views/pages/");
 App.set("layout", __dirname + "/views/master");
 App.use(express.static(__dirname+'/public'))
+App.use(expressLayouts)
 App.use(expressSession({
     secret: process.env.SECRET,
     resave: false,
@@ -28,8 +30,8 @@ App.use(expressSession({
 App.use('/',registeredRouter)
 App.use('/',newUserRouter)
 
-App.set('view engine','ejs')
-App.use(expressLayouts)
+
+
 
 
 
