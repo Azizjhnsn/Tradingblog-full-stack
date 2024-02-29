@@ -17,7 +17,7 @@ router.get('/about',protection,aboutController);
 router.get('/post',protection,postController);
 router.get('/contact',protection,contactController);
 router.get('/home',protection,homeController);
-router.get('/logout',logoutController);
+router.get('/logout',protection,logoutController);
 
 router.post('/newPost',imgUpload.array('imageFile',5),newPostSendingController);
 router.post('/sendEmail',sendEmail)

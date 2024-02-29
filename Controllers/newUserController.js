@@ -26,8 +26,8 @@ async function retrieveFromDb (res){
 const homepage= async(req,res)=>{
     try{
        await retrieveFromDb(res);
-       res.render('index',
-       {
+       res.render('index',{
+           layout: false,
            posts: allData
        })
     }catch(error){
@@ -37,12 +37,12 @@ const homepage= async(req,res)=>{
 
 // Login and signup routes (get/post)
 const signupController= (req,res)=>{
-        res.render('signup.ejs')
+        res.render('signup',{layout: false})
     }
 
 
     loginController= (req,res)=>{
-        res.render('login.ejs')
+        res.render('login',{layout: false})
     }
 
 

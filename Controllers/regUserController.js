@@ -25,8 +25,9 @@ async function retrieveFromDb (res){
 const homeController = async (req,res)=>{
      try{
         await retrieveFromDb(res);
-        res.render('home.ejs',
+        res.render('home',
         {
+            headerImage: 'assets/img/home-bg.jpg',
             posts: allData
         })
      }catch(error){
@@ -36,7 +37,7 @@ const homeController = async (req,res)=>{
 
 
 const aboutController = (req,res)=>{
-        res.render('about.ejs')
+        res.render('about',{headerImage: 'assets/img/about-bg.jpg'})
     }
 
 
@@ -47,7 +48,8 @@ const aboutController = (req,res)=>{
             await retrieveFromDb(res);
     
             // Now, you can access the data stored in postTitle, postContent, and postReference
-            res.render('post.ejs', {
+            res.render('post', {
+                headerImage: 'assets/img/post-bg.jpg',
                 posts: allData,
             });
             
@@ -81,7 +83,9 @@ const newPostSendingController = async (req,res)=>{
 
 
 const contactController = (req,res)=>{
-        res.render('contact.ejs')
+        res.render('contact',{
+            headerImage: 'assets/img/contact-bg.jpg',
+        })
     }
 
     
