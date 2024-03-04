@@ -28,7 +28,7 @@ const homeController = async (req,res)=>{
         res.render('home',
         {
             headerImage: 'assets/img/home-bg.jpg',
-            posts: allData
+            records: allData
         })
      }catch(error){
         console.log(error);
@@ -50,7 +50,7 @@ const aboutController = (req,res)=>{
             // Now, you can access the data stored in postTitle, postContent, and postReference
             res.render('post', {
                 headerImage: 'assets/img/post-bg.jpg',
-                posts: allData,
+                records: allData,
             });
             
         } catch (error) {
@@ -88,6 +88,24 @@ const contactController = (req,res)=>{
         })
     }
 
+const deletePost = async(req,res)=>{
+    const recordId = req.params.id;
+
+  try {
+    const deletedRecord = await postsModel.findByIdAndDelete(recordId);
+
+    if (!deletedRecord) {
+      return res.status(404).json({ error: 'Record not found' });
+    } else{
+         res.redirect('/');
+
+    }
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+} 
     
 const logoutController = (req,res)=>{
     
@@ -134,5 +152,6 @@ module.exports= {
     newPostSendingController,
     contactController,
     logoutController,
+    deletePost,
     sendEmail
 }

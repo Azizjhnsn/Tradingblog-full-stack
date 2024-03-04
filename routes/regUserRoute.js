@@ -7,6 +7,7 @@ const {
     newPostSendingController,
     contactController,
     logoutController,
+    deletePost,
     sendEmail
         }= require('../Controllers/regUserController');
 
@@ -20,6 +21,7 @@ router.get('/home',protection,homeController);
 router.get('/logout',protection,logoutController);
 
 router.post('/newPost',imgUpload.array('imageFile',5),newPostSendingController);
+router.post('/deletePost/:id',deletePost)
 router.post('/sendEmail',sendEmail)
 
 

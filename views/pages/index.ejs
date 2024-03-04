@@ -48,9 +48,46 @@
         </header>
         <!-- Main Content-->
 
-        <%- include("../partials/postSection") %>
+        <!-- 
+                            <!-- Divider-->
+                            <hr class="my-4" />
+
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+
+                      <!-- Posts-->
+                      <% records.reverse().forEach( record=>{ %>
+                      <div class="post-preview">
+                        <a>
+                            <h2 class="post-title"><%= record.postHeader %></h2>
+                            <h3 class="post-subtitle"><%= record.postContent %></h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!"><%= record.userName %></a>
+                            <% record.createdAt %>
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Comming soon -->
+
+                    <% }) %>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+
+        
+        <!-- Divider-->
+        <hr class="my-4" />
+
                     <!-- Pager-->
-                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="login">More Posts →</a></div>
                 </div>
             </div>
         </div>

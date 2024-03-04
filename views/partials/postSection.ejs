@@ -1,4 +1,4 @@
-
+<!-- 
                             <!-- Divider-->
                             <hr class="my-4" />
 
@@ -9,24 +9,35 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
 
                       <!-- Posts-->
-                      <% posts.reverse().forEach( post=>{ %>
+                      <% records.reverse().forEach( record=>{ %>
                       <div class="post-preview">
                         <a>
-                            <h2 class="post-title"><%= post.postHeader %></h2>
-                            <h3 class="post-subtitle"><%= post.postContent %></h3>
+                            <h2 class="post-title"><%= record.postHeader %></h2>
+                            <h3 class="post-subtitle"><%= record.postContent %></h3>
                         </a>
                         <p class="post-meta">
                             Posted by
-                            <a href="#!"><%= post.userName %></a>
-                            <% post.createdAt.toDateString() %>
+                            <a href="#!"><%= record.userName %></a>
+                            <% record.createdAt %>
                         </p>
                     </div>
                     <!-- Divider-->
                     <hr class="my-4" />
                     <!-- Comming soon -->
 
-                    <!-- <button class="btn btn-primary">Update</button>
-                    <button class="btn btn-danger">Delete</button> -->
+                    <!-- <button class="btn btn-primary">Update</button> -->
+                    <div class="container">
+                        <div class="row ">
+                            <!-- Delete Form -->
+                         <form action="/deletePost/<%= record._id %>" method="POST" class="col-md-6" onsubmit="return confirm('Are you sure you want to delete this record?')">
+                         <button type="submit" class="btn btn-danger mb-1">Delete</button>
+                         </form>
+                         <!-- Update -->
+                         <form action="/deletePost/<%= record._id %>" method="POST" class="col-md-6">
+                         <button type="submit" class="btn btn-primary">Update</button>
+                         </form>
+                        </div>
+                    </div>
                     <% }) %>
                     </div>
 

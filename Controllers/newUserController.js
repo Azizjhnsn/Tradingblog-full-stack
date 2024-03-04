@@ -28,7 +28,7 @@ const homepage= async(req,res)=>{
        await retrieveFromDb(res);
        res.render('index',{
            layout: false,
-           posts: allData
+           records: allData
        })
     }catch(error){
        console.log(error);
