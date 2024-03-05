@@ -68,12 +68,12 @@ const newPostSendingController = async (req,res)=>{
         const postData = {
             postHeader: req.body.postHeader,
             postContent: req.body.postContent,
-            userName: req.session.user
+            userName: req.session.user,
+            userId: req.session.userId
         }
         // Adding record to db
             await postsModel.insertMany(postData)
-            console.log('Post sent');
-            console.log(req.session.user);
+            console.log('Post sent')
         } catch(err){
             console.log(err);
         }
@@ -90,21 +90,27 @@ const contactController = (req,res)=>{
 
 const deletePost = async(req,res)=>{
     const recordId = req.params.id;
-
-  try {
-    const deletedRecord = await postsModel.findByIdAndDelete(recordId);
-
-    if (!deletedRecord) {
-      return res.status(404).json({ error: 'Record not found' });
+    const postUserId = req.body.userId
+    if (postUserId == req.session.userId){
+        try {
+            const deletedRecord = await postsModel.findByIdAndDelete(recordId);
+        
+            if (!deletedRecord) {
+              return res.status(404).json({ error: 'Record not found' });
+            } else{
+                 res.redirect('/post');
+        
+            }
+        
+          } catch (error) {
+            console.error(error);
+            return res.status(500).json({ error: 'Internal Server Error' });
+          }
     } else{
-         res.redirect('/');
-
+        console.log('You cannot delete this post');
+        res.redirect('/post')
     }
 
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: 'Internal Server Error' });
-  }
 } 
     
 const logoutController = (req,res)=>{

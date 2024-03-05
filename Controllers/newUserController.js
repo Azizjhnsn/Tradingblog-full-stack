@@ -82,6 +82,7 @@ const signupController= (req,res)=>{
             if(isPasswordValid){
                 if (req.session){
                     req.session.user = isUserValid.name
+                    req.session.userId = isUserValid._id;
                 res.redirect('/home')
                 }else{
                     console.error('Session Error')

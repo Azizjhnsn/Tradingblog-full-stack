@@ -31,10 +31,11 @@
                             <!-- Delete Form -->
                          <form action="/deletePost/<%= record._id %>" method="POST" class="col-md-6" onsubmit="return confirm('Are you sure you want to delete this record?')">
                          <button type="submit" class="btn btn-danger mb-1">Delete</button>
+                         <input type="hidden" name="userId" value="<%= record.userId %>">
                          </form>
                          <!-- Update -->
-                         <form action="/deletePost/<%= record._id %>" method="POST" class="col-md-6">
-                         <button type="submit" class="btn btn-primary">Update</button>
+                         <form action="" class="col-md-6">
+                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Update</button>
                          </form>
                         </div>
                     </div>
