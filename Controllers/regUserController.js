@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt')
 const postsModel = require('../models/postsModel')
 const nodemailer = require('nodemailer')
 
-
+// Function to retrive the data from the databse and use it later
 let allData=[]
 async function retrieveFromDb (res){
     try {
@@ -21,7 +21,7 @@ async function retrieveFromDb (res){
 };
 
 
-
+// Get requests
 const homeController = async (req,res)=>{
      try{
         await retrieveFromDb(res);
@@ -34,15 +34,10 @@ const homeController = async (req,res)=>{
         console.log(error);
      }
     }
-
-
 const aboutController = (req,res)=>{
         res.render('about',{headerImage: 'assets/img/about-bg.jpg'})
     }
-
-
-
-    const postController = async (req, res) => {
+const postController = async (req, res) => {
         try {
             // Wait for the data to be retrieved from the database
             await retrieveFromDb(res);
@@ -58,10 +53,14 @@ const aboutController = (req,res)=>{
             res.status(500).send('Internal server error');
         }
     };
-    
+const contactController = (req,res)=>{
+    res.render('contact',{
+        headerImage: 'assets/img/contact-bg.jpg',
+    })
+}    
 
 
-
+// Post requests
 const newPostSendingController = async (req,res)=>{
         try{
         // Creating record
@@ -80,14 +79,6 @@ const newPostSendingController = async (req,res)=>{
         await 
         res.redirect('post')
     }
-
-
-const contactController = (req,res)=>{
-        res.render('contact',{
-            headerImage: 'assets/img/contact-bg.jpg',
-        })
-    }
-
 const deletePost = async(req,res)=>{
     const recordId = req.params.id;
     const postUserId = req.body.userId
@@ -111,8 +102,7 @@ const deletePost = async(req,res)=>{
         res.redirect('/post')
     }
 
-} 
-    
+}    
 const logoutController = (req,res)=>{
     
         req.session.destroy((err)=>{
@@ -123,6 +113,7 @@ const logoutController = (req,res)=>{
         })
     }
 
+// Email sending
 const sendEmail = async(req,res)=>{
     const transporter = nodemailer.createTransport({
         host:process.env.SMTP_HOST,

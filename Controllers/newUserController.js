@@ -3,6 +3,7 @@ const regCollection = require("../models/regModel")
 const postsModel = require('../models/postsModel')
 
 
+// Function to retrive the data from the databse and use it later
 
 let allData=[]
 async function retrieveFromDb (res){
@@ -22,7 +23,7 @@ async function retrieveFromDb (res){
 };
 
 
-// homepage
+// Non registerd users page route
 const homepage= async(req,res)=>{
     try{
        await retrieveFromDb(res);
@@ -35,18 +36,17 @@ const homepage= async(req,res)=>{
     }
    }
 
-// Login and signup routes (get/post)
+// Athentication get controllers
 const signupController= (req,res)=>{
         res.render('signup',{layout: false})
     }
-
-
-    loginController= (req,res)=>{
+const loginController= (req,res)=>{
         res.render('login',{layout: false})
     }
 
+// Authentication post controllers
 
-    signupPost= async (req,res)=>{
+const signupPost= async (req,res)=>{
         const data = {
             name: req.body.username,
             password: req.body.password
@@ -69,9 +69,7 @@ const signupController= (req,res)=>{
     res.redirect('/home')
 }
     }
-    
-
-    loginPost= async(req,res)=>{
+const loginPost= async(req,res)=>{
         try{
             const isUserValid = await regCollection.findOne({name: req.body.username})
             if(!isUserValid){
