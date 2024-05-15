@@ -4,6 +4,7 @@ require('dotenv').config()
 const regCollection = require('./models/regModel')
 const ejs= require('ejs')
 const path= require('path')
+const cors= require('cors')
 const expressSession = require('express-session')
 const registeredRouter= require('./routes/regUserRoute')
 const newUserRouter= require('./routes/newUserRoute')
@@ -15,6 +16,7 @@ const Port= process.env.Port || 3090
 // Converting data into json and encoding URL
 App.use(express.json())
 App.use(express.urlencoded({extended: false}));
+App.use(cors())
 App.set('view engine','ejs');
 App.set("views", __dirname + "/views/pages/");
 App.set("layout", __dirname + "/views/master");

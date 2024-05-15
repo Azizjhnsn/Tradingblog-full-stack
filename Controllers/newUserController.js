@@ -36,7 +36,7 @@ const homepage= async(req,res)=>{
     }
    }
 
-// Athentication get controllers
+// Get controllers (Athentication)
 const signupController= (req,res)=>{
         res.render('signup',{layout: false})
     }
@@ -44,31 +44,67 @@ const loginController= (req,res)=>{
         res.render('login',{layout: false})
     }
 
-// Authentication post controllers
-
-const signupPost= async (req,res)=>{
-        const data = {
-            name: req.body.username,
-            password: req.body.password
-        }
-        const existingUser = await regCollection.findOne({name: data.name});
-        if(existingUser){
-        res.redirect('/')
-        }
-        else{
-    // hashing the pasword
-    const saltround = 10
-    const hashedPassword = await bcrypt.hash(data.password, saltround)
+// Post controllers (Authentication)
+// const signupPost= async (req,res)=>{
+//         const data = {
+//             name: req.body.username,
+//             password: req.body.password
+//         }
+//         console.log(data);
+//         const existingUser = await regCollection.findOne({name: data.name});
+//         if(existingUser){
+//         console.log('User already there')
+//         res.redirect('/')
+//         }
+//         else{
+//     // hashing the pasword
+//     const saltround = 10
+//     const hashedPassword = await bcrypt.hash(data.password, saltround)
     
-    // Replacing original password with hashedpassword
-    data.password = hashedPassword
+//     // Replacing original password with hashedpassword
+//     data.password = hashedPassword
 
 
-    await regCollection.insertMany(data)
+//     await regCollection.insertMany(data)
 
-    res.redirect('/home')
-}
+//     console.log("SUCCESFUL REGISTRATION")
+//     res.redirect('/home')
+// }
+//     }
+const signupPost = async (req, res) => {
+    try {
+      // Extract data from request body
+      const data = {
+        name: req.body.username,
+        password: req.body.password,
+      };
+  
+      // Check for existing user
+      const existingUser = await regCollection.findOne({ name: data.name });
+      if (existingUser) {
+        console.log('User already exists');
+        res.redirect('/'); // Or display an appropriate error message to the user
+        return; // Exit the function if user already exists
+      }
+  
+      // Hash the password with bcrypt
+      const saltRounds = 10;
+      const hashedPassword = await bcrypt.hash(data.password, saltRounds);
+  
+      // Update data object with hashed password
+      data.password = hashedPassword;
+  
+      // Insert user data into database
+      await regCollection.insertMany(data); // Use insertOne for single document insertion
+  
+      console.log("Successful registration");
+      res.redirect('/home');
+    } catch (error) {
+      console.error('Error during signup:', error);
+      res.redirect('/signup'); // Redirect to signup page with an error message (optional)
     }
+  };
+  
 const loginPost= async(req,res)=>{
         try{
             const isUserValid = await regCollection.findOne({name: req.body.username})
